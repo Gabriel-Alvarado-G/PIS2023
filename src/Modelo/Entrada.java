@@ -14,7 +14,6 @@ public class Entrada extends Movimiento{
     private int idEntradaProducto;
     private String idProveedor;
     private LocalDate fechaEntrada;
-    private int valorIva;
 
 
     public int getIdEntradaProducto() {
@@ -41,7 +40,5 @@ public class Entrada extends Movimiento{
     public void setFechaEntrada(LocalDate fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
-
-    
-    
+      
 }

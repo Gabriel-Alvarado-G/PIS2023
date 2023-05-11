@@ -14,7 +14,6 @@ public class Salida extends Movimiento{
     private int idSalidaProducto;
     private String idCliente;
     private LocalDate fechaSalida;
-    private int valorIva;
 
     public int getIdSalidaProducto() {
         return idSalidaProducto;

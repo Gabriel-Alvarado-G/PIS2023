@@ -37,8 +37,8 @@ public class formRegistroEntradas extends javax.swing.JPanel {
     }
     
     public static void getEntradas(){
-        EntradaDAO entraDAO = new EntradaDAO();
-        List<Entrada> entrada = entraDAO.listar();
+        EntradaDAO RegistentraDAO = new EntradaDAO();
+        List<Entrada> entrada = RegistentraDAO.listar();
 
         DefaultTableModel model = (DefaultTableModel) tabListaEntradas.getModel();
         tabListaEntradas.removeAll();

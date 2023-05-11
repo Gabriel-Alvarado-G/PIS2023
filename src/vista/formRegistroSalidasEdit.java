@@ -57,18 +57,18 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         System.out.println(identra);
         entra = entraDAO.leer(Integer.parseInt(identra));
         
-        txtCodigo.setText(entra.getCodigo());
+        txtcodigo.setText(entra.getCodigo());
        // entra.setIdProveedor(String.valueOf(jtxentrada.getItemAt(jtxentrada.getSelectedIndex()).getIdProveedor()));
-        txtSubTotal.setText(String.valueOf(entra.getSubtotal()));
-        txtTotal.setText(String.valueOf(entra.getTotal()));
+        txtsubtotal.setText(String.valueOf(entra.getSubtotal()));
+        txtTOTAL.setText(String.valueOf(entra.getTotal()));
     }
         public void getCliente(){
         ClienteDAO clientDAO = new ClienteDAO();
         List<Cliente> client = clientDAO.listar();
 
-        jtxentrada.removeAllItems();
+        jtxidcliente.removeAllItems();
         for(Cliente cli:client){
-            jtxentrada.addItem(new Cliente(cli.getIdCliente(), cli.getPrimerApellido()));
+            jtxidcliente.addItem(new Cliente(cli.getIdCliente(), cli.getPrimerApellido()));
             //jtxentrada.addItem(new Proveedor(String.valueOf(pro.getIdProveedor()), String.valueOf(pro.getPrimerNombre())));
         }
         
@@ -95,20 +95,20 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         labSubTotal = new javax.swing.JPanel();
         labTitle = new javax.swing.JLabel();
-        labfecha = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        labIdProve = new javax.swing.JLabel();
+        labFecha = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        labIdCliente = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnGuardar1 = new javax.swing.JButton();
         labPrecio = new javax.swing.JLabel();
-        txtSubTotal = new javax.swing.JTextField();
-        labIva = new javax.swing.JLabel();
-        labCodigo = new javax.swing.JLabel();
+        txtsubtotal = new javax.swing.JTextField();
+        labPorcIva = new javax.swing.JLabel();
+        labCod = new javax.swing.JLabel();
         listIva = new javax.swing.JComboBox<>();
-        labTotal = new javax.swing.JLabel();
-        txtFecha2 = new javax.swing.JFormattedTextField();
-        txtTotal = new javax.swing.JTextField();
-        jtxentrada = new javax.swing.JComboBox<>();
+        labtotal = new javax.swing.JLabel();
+        txtFecha1 = new javax.swing.JFormattedTextField();
+        txtTOTAL = new javax.swing.JTextField();
+        jtxidcliente = new javax.swing.JComboBox<>();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -125,22 +125,22 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         labTitle.setText("Modificar Salida");
         labSubTotal.add(labTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        labfecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labfecha.setText("Fecha");
-        labSubTotal.add(labfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        labFecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labFecha.setText("Fecha");
+        labSubTotal.add(labFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
-        txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtCodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        txtcodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtcodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
+                txtcodigoActionPerformed(evt);
             }
         });
-        labSubTotal.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 30));
+        labSubTotal.add(txtcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 200, 30));
 
-        labIdProve.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labIdProve.setText("ID Cliente");
-        labSubTotal.add(labIdProve, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, -1));
+        labIdCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labIdCliente.setText("ID Cliente");
+        labSubTotal.add(labIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(204, 204, 204));
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -166,56 +166,61 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         labSubTotal.add(btnGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 90, 30));
 
         labPrecio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labPrecio.setText("Sub Total");
-        labSubTotal.add(labPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        labPrecio.setText("SubTotal");
+        labSubTotal.add(labPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        txtSubTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtSubTotal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtSubTotal.addActionListener(new java.awt.event.ActionListener() {
+        txtsubtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtsubtotal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtsubtotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSubTotalActionPerformed(evt);
+                txtsubtotalActionPerformed(evt);
             }
         });
-        labSubTotal.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 200, 30));
+        labSubTotal.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 30));
 
-        labIva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labIva.setText("Porcentaje IVA");
-        labSubTotal.add(labIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+        labPorcIva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labPorcIva.setText("Porcentaje IVA");
+        labSubTotal.add(labPorcIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
-        labCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labCodigo.setText("Código");
-        labSubTotal.add(labCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        labCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labCod.setText("Código");
+        labSubTotal.add(labCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         listIva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listIvaActionPerformed(evt);
             }
         });
-        labSubTotal.add(listIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 190, 30));
+        labSubTotal.add(listIva, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 100, 30));
 
-        labTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labTotal.setText("Total");
-        labSubTotal.add(labTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        labtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labtotal.setText("Total");
+        labSubTotal.add(labtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        txtFecha2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        txtFecha2.setText("dd/MM/yyyy");
-        labSubTotal.add(txtFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 190, 30));
-
-        txtTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtTotal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+        txtFecha1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        txtFecha1.setText("dd/MM/yyyy");
+        txtFecha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalActionPerformed(evt);
+                txtFecha1ActionPerformed(evt);
             }
         });
-        labSubTotal.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 200, 30));
+        labSubTotal.add(txtFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 190, 30));
 
-        jtxentrada.addActionListener(new java.awt.event.ActionListener() {
+        txtTOTAL.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTOTAL.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTOTAL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxentradaActionPerformed(evt);
+                txtTOTALActionPerformed(evt);
             }
         });
-        labSubTotal.add(jtxentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 190, 30));
+        labSubTotal.add(txtTOTAL, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 200, 30));
+
+        jtxidcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxidclienteActionPerformed(evt);
+            }
+        });
+        labSubTotal.add(jtxidcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,9 +238,9 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtcodigoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
@@ -247,24 +252,24 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         Entrada entra = new Entrada();
         EntradaDAO entraDAO = new EntradaDAO();
         
-        if(!txtCodigo.getText().equals("") && //!txtIdProve.getText().equals("") && 
-                !txtSubTotal.getText().equals("") && 
-                !txtFecha2.getText().equals("")&& 
-                !txtFecha2.getText().equals("dd/MM/yyyy")){
+        if(!txtcodigo.getText().equals("") && //!txtIdProve.getText().equals("") && 
+                !txtsubtotal.getText().equals("") && 
+                !txtFecha1.getText().equals("")&& 
+                !txtFecha1.getText().equals("dd/MM/yyyy")){
             //asaisas
-           entra.setCodigo((String)txtCodigo.getText());
+           entra.setCodigo((String)txtcodigo.getText());
             //entra.setIdProveedor(String.valueOf(txtIdProve.getText()));
-            entra.setIdProveedor(String.valueOf(jtxentrada.getItemAt(jtxentrada.getSelectedIndex()).getIdCliente()));
+            entra.setIdProveedor(String.valueOf(jtxidcliente.getItemAt(jtxidcliente.getSelectedIndex()).getIdCliente()));
              entra.setIdProveedor(String.valueOf(idCliente));
-            entra.setSubtotal(Float.parseFloat(txtSubTotal.getText()));
+            entra.setSubtotal(Float.parseFloat(txtsubtotal.getText()));
             entra.setValorIva((int) listIva.getItemAt(listIva.getSelectedIndex()).getValor());                      
-            LocalDate fecha = LocalDate.parse(txtFecha2.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy")); 
+            LocalDate fecha = LocalDate.parse(txtFecha1.getText(),DateTimeFormatter.ofPattern("dd/MM/yyyy")); 
             entra.setFechaEntrada(fecha);                     
                 entra.setEstado(1);
                 entra.setFechaModifica(LocalDateTime.now());
                 entra.setUsuarioModifica(sysUser.getUsername());
                             
-                if(txtCodigo.getText().length() == 5){
+                if(txtcodigo.getText().length() == 5){
                     if(entraDAO.modificar(entra)){                           
                         this.dispose();
                         formProductos.getProductos();
@@ -284,21 +289,25 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnGuardar1ActionPerformed
 
-    private void txtSubTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubTotalActionPerformed
+    private void txtsubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsubtotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSubTotalActionPerformed
+    }//GEN-LAST:event_txtsubtotalActionPerformed
 
-    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+    private void txtTOTALActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTOTALActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalActionPerformed
+    }//GEN-LAST:event_txtTOTALActionPerformed
 
-    private void jtxentradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxentradaActionPerformed
+    private void jtxidclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxidclienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxentradaActionPerformed
+    }//GEN-LAST:event_jtxidclienteActionPerformed
 
     private void listIvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listIvaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listIvaActionPerformed
+
+    private void txtFecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFecha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFecha1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,19 +411,19 @@ public class formRegistroSalidasEdit extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardar1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<Cliente> jtxentrada;
-    private javax.swing.JLabel labCodigo;
-    private javax.swing.JLabel labIdProve;
-    private javax.swing.JLabel labIva;
+    private javax.swing.JComboBox<Cliente> jtxidcliente;
+    private javax.swing.JLabel labCod;
+    private javax.swing.JLabel labFecha;
+    private javax.swing.JLabel labIdCliente;
+    private javax.swing.JLabel labPorcIva;
     private javax.swing.JLabel labPrecio;
     private javax.swing.JPanel labSubTotal;
     private javax.swing.JLabel labTitle;
-    private javax.swing.JLabel labTotal;
-    private javax.swing.JLabel labfecha;
+    private javax.swing.JLabel labtotal;
     private javax.swing.JComboBox<Iva> listIva;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JFormattedTextField txtFecha2;
-    private javax.swing.JTextField txtSubTotal;
-    private javax.swing.JTextField txtTotal;
+    private javax.swing.JFormattedTextField txtFecha1;
+    private javax.swing.JTextField txtTOTAL;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtsubtotal;
     // End of variables declaration//GEN-END:variables
 }
